@@ -40,6 +40,8 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	private int telefono;
 	private String correo;
 	private String posicion;
+	private String tipoPersona;
+	private boolean experto;
 	
 	private List<Persona> personas;
 
@@ -52,10 +54,6 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 		try {
 			log.info("antes de llamar bean.obtenerPersonas()");
 			personas = bean.obtenerPersonas();
-			if(personas!=null&&personas.size()>0) {
-				nombre =personas.get(0).getNombre();
-				apellido =personas.get(0).getApellido();
-			}
 		} catch (Exception e) {
 			log.error("Error al PersonaIDAO.obtenerPersonas():" + e);
 			e.printStackTrace();
@@ -68,7 +66,7 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	 * @since 1.0
 	 * @return 
 	 */
-    public String insertarPersoa() {
+    public String insertarPersona() {
 
     	log.info("inicio insertarPersoa");
     	try{
@@ -245,4 +243,20 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
+
+	public String getTipoPersona() {
+		return this.tipoPersona;
+	}
+
+	public void setTipoPersona(String tipoPersona) {
+		this.tipoPersona = tipoPersona;
+	}
+	public boolean isExperto() {
+		return this.experto;
+	}
+
+	public void setExperto(boolean experto) {
+		this.experto = experto;
+	}
+
 }
