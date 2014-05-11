@@ -6,6 +6,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
 import org.apache.log4j.Logger;
@@ -101,6 +104,27 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
     	}
     	init();
         return "success";
+    }
+
+	/**
+	 * Metodo encargado de llamar al EJB para insertar una persona.
+	 * 
+	 * @since 1.0
+	 * @return 
+	 */
+    public void actualizaPersona2(ActionEvent actionEvent) {
+
+    	log.info("inicio actualizaPersona");
+    	try{
+    		Persona p = this.getPersona();
+    		bean.actualizaPersona(p);
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Modificado usuario " + this.rut + " " + this.nombre + " " + this.apellido+"!"));
+    		log.info("termino actualizaPersona");
+    	} catch(Exception e) {
+    		log.error("Error actualizaPersona");
+    		log.error("Error " + e.getMessage());
+    		log.error("Error " + e.getClass());
+    	}
     }
 
 	/**
