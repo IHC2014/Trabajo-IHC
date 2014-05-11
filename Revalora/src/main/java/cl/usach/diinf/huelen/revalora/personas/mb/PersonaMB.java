@@ -11,7 +11,6 @@ import javax.inject.Named;
 import org.apache.log4j.Logger;
 
 import cl.usach.diinf.huelen.revalora.personas.dao.PersonaBean;
-import cl.usach.diinf.huelen.revalora.personas.dao.PersonaDAO;
 import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 
 /**
@@ -27,7 +26,7 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	/**
 	 * Logger de la clase
 	 */
-	Logger log = Logger.getLogger(PersonaDAO.class);
+	Logger log = Logger.getLogger(PersonaMB.class);
 
 	private String rut;
 	private int id;
@@ -45,39 +44,18 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	
 	private List<Persona> personas;
 
-	public PersonaMB() {
+	public PersonaMB() { 	
 		super();
 	}
 
 	@PostConstruct
 	public void init(){
-		if(this.rut!=null&&"".compareTo(this.rut)!=0) {
-			Persona p;
-			try {
-				p = bean.obtenerPersonas(this.rut);
-				this.rut = p.getRut();
-				this.id = p.getId();
-				this.clave = p.getClave();
-				this.nombre = p.getNombre();
-				this.apellido = p.getApellido();
-				this.genero = p.getGenero();
-				this.cumpleano = p.getCumpleano();
-				this.direccion = p.getDireccion();
-				this.telefono = p.getTelefono();
-				this.correo = p.getCorreo();
-				this.posicion = p.getPosicion();
-			} catch (Exception e) {
-				log.error("Error al bean.obtenerPersonas("+this.rut+"):" + e);
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				log.info("antes de llamar bean.obtenerPersonas()");
-				personas = bean.obtenerPersonas();
-			} catch (Exception e) {
-				log.error("Error al PersonaIDAO.obtenerPersonas():" + e);
-				e.printStackTrace();
-			}			
+		try {
+			log.info("antes de llamar bean.obtenerPersonas()");
+			personas = bean.obtenerPersonas();
+		} catch (Exception e) {
+			log.error("Error al PersonaIDAO.obtenerPersonas():" + e);
+			e.printStackTrace();
 		}
 	}
 
@@ -121,6 +99,7 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
     		log.error("Error " + e.getClass());
     		return "error";
     	}
+    	init();
         return "success";
     }
 
@@ -130,19 +109,52 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	 * @since 1.0
 	 * @return 
 	 */
-    public String eliminaPersona() {
+    public String obtenerPersona(String rut) {
+
+	    if(rut!=null&&"".compareTo(rut)!=0) {
+		    Persona p;
+		    try {
+			    p = bean.obtenerPersonas(rut);
+			    this.rut = p.getRut();
+			    this.id = p.getId();
+			    this.clave = p.getClave();
+			    this.nombre = p.getNombre();
+			    this.apellido = p.getApellido();
+			    this.genero = p.getGenero();
+			    this.cumpleano = p.getCumpleano();
+			    this.direccion = p.getDireccion();
+			    this.telefono = p.getTelefono();
+			    this.correo = p.getCorreo();
+			    this.posicion = p.getPosicion();
+		    } catch (Exception e) {
+			    log.error("Error al bean.obtenerPersonas("+this.rut+"):" + e);
+			    e.printStackTrace();
+		    }
+	    }
+	    return "actualiza";
+    }
+	/**
+	 * Metodo encargado de llamar al EJB para insertar una persona.
+	 * 
+	 * @since 1.0
+	 * @return 
+	 */
+    public String eliminaPersona(String rut) {
 
     	log.info("inicio eliminaPersona");
-    	try{
-    		Persona p = this.getPersona();    		
-    		bean.eliminaPersona(p);
-    		log.info("termino eliminaPersona");
-    	} catch(Exception e) {
-    		log.error("Error eliminaPersona");
-    		log.error("Error " + e.getMessage());
-    		log.error("Error " + e.getClass());
-    		return "error";
-    	}
+	    if(rut!=null&&"".compareTo(rut)!=0) {
+		    try {
+		    	Persona p = bean.obtenerPersonas(rut);
+        		bean.eliminaPersona(p);
+        		log.info("termino eliminaPersona");
+    	    } catch(Exception e) {
+    		    log.error("Error eliminaPersona");
+    		    log.error("Error " + e.getMessage());
+    		    log.error("Error " + e.getClass());
+    		    return "error";
+    	    }
+	    }
+    	init();
         return "success";
     }
 

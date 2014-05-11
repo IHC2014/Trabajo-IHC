@@ -68,51 +68,43 @@
 				<p:panel header="Editar Persona">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel for="rutPersona" value="RUT: *" />
-						<p:inputText id="rutPersona" value="" label="RUT" />
+						<p:inputText id="rutPersona" value="#{personaMB.rut}" label="RUT" />
 
 						<h:outputLabel for="nombrePersona" value="Nombre: " />
-						<p:inputText id="nombrePersona" value="" label="Nombre" />
+						<p:inputText id="nombrePersona" value="#{personaMB.nombre}" label="Nombre" />
 
-						<h:outputLabel for="apellidoPaterno" value="Apellido Paterno: " />
-						<p:inputText id="apellidoPaterno" value=""
-							label="Apellido Paterno" />
+                        <h:outputLabel for="apellido" value="Apellidos: " />
+                        <p:inputText id="apellido" name="apellido" value="#{personaMB.apellido}" label="Apellidos" />
 
-						<h:outputLabel for="apellidoMaterno" value="Apellido Materno: " />
-						<p:inputText id="apellidoMaterno" value=""
-							label="Apellido Materno" />
+                        <h:outputText value="Genero: " />
+                        <p:selectOneRadio id="genero" name="genero" value="#{personaMB.genero}">
+                            <f:selectItem itemLabel="Femenino" itemValue="F" />
+                            <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        </p:selectOneRadio>
 
-						<h:outputText value="Sexo: " />
-						<p:selectOneRadio id="sexo" value="#{formBean.option}">
-							<f:selectItem itemLabel="Femenino" itemValue="F" />
-							<f:selectItem itemLabel="Masculino" itemValue="M" />
-						</p:selectOneRadio>
+                        <h:outputText value="Fecha de nacimiento: " />
+                        <p:calendar value="#{personaMB.cumpleano}" id="popupButtonCal" showOn="button" mask="99/99/9999" />
 
-						<h:outputText value="Fecha de nacimiento: " />
-						<p:calendar value="#{calendarBean.date3}" id="popupButtonCal"
-							showOn="button" mask="99/99/9999" />
+                        <h:outputLabel for="direccion" value="Dirección: " />
+                        <p:inputText id="direccion" value="#{personaMB.direccion}" label="Dirección" />
 
-						<h:outputLabel for="direccion" value="Dirección: " />
-						<p:inputText id="direccion" value="" label="Dirección" />
+                        <h:outputLabel for="telefono" value="Teléfono: " />
+                        <p:inputText id="telefono" value="#{personaMB.telefono}" label="Teléfono" />
 
-						<h:outputLabel for="telefono" value="Teléfono: " />
-						<p:inputText id="telefono" value="" label="Teléfono" />
+                        <h:outputLabel for="correo" value="Correo: " />
+                        <p:inputText id="correo" value="#{personaMB.correo}" label="Correo" />
 
-						<h:outputLabel for="correo" value="Correo: " />
-						<p:inputText id="correo" value="" label="Correo" />
+                        <h:outputText value="Tipo Persona: " />
+                        <p:selectOneRadio id="tipoPersona" value="#{personaMB.tipoPersona}">
+                            <f:selectItem itemLabel="Integrantes" itemValue="Inte" />
+                            <f:selectItem itemLabel="Postulantes" itemValue="Post" />
+                        </p:selectOneRadio>
 
-						<h:outputText value="Tipo Persona: " />
-						<p:selectOneRadio id="tipoPersona" value="#{formBean.option}">
-							<f:selectItem itemLabel="Integrantes" itemValue="Inte" />
-							<f:selectItem itemLabel="Postulantes" itemValue="Post" />
-						</p:selectOneRadio>
+                        <h:outputText value="Experto: " />
+                        <p:selectBooleanCheckbox value="#{personaMB.experto}" />
 
-						<h:outputText value="Experto: " />
-						<p:selectBooleanCheckbox value="#{formBean.value1}" />
-
-						<p:commandButton value="Guardar" icon="ui-icon-disk"
-							style="margin:10px 0" />
-						<p:commandButton value="Cancelar" icon="ui-icon-cancel"
-							style="margin:10px 0" onclick="javascript:location.href='listarPersonas.xhtml';"/>
+                        <h:commandButton action="#{personaMB.actualizaPersona}" value="Guardar" icon="ui-icon-disk" style="margin:10px 0"/>
+                        <p:commandButton value="Cancelar" icon="ui-icon-cancel" style="margin:10px 0" onclick="javascript:location.href='listarPersonas.xhtml';"/>
 					</h:panelGrid>
 				</p:panel>
 			</p:layoutUnit>

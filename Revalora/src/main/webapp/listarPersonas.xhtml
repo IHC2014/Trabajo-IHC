@@ -95,11 +95,10 @@
 					</p:column>
 
 					<p:column style="width:6%">
-						<p:commandLink onclick="document.getElementById('rutSelecciona').value='#{persona.rut}';javascript:location.href='editarPersona.xhtml';">
-							<span class="ui-icon ui-icon-pencil"></span>
-						</p:commandLink>
-						<p:commandLink onclick="document.getElementById('rutSelecciona').value='#{persona.rut}';confirmDelete.show();">
+					    <h:commandButton action="#{personaMB.obtenerPersona(persona.rut)}" value="Guardar" class="ui-icon ui-icon-pencil"/>
+						<p:commandLink onclick="confirmDelete.show();">
 							<span class="ui-icon ui-icon-closethick"></span>
+							<f:setPropertyActionListener value="#{personaMB.rut}" target="#{persona.rut}" />
 						</p:commandLink>
 					</p:column>
 				</p:dataTable>
@@ -108,7 +107,7 @@
 
 		<p:confirmDialog id="confirmDialog" message="¿Seguro de continuar con la eliminación?" header="Advertencia de Eliminación" severity="alert"
 			widgetVar="confirmDelete" modal="true">
-			<p:commandButton value="Aceptar" type="button" actionListener="#{personaMB.eliminaPersona}" update="computers" oncomplete="confirmDelete.hide();" />
+			<h:commandButton value="Aceptar" action="#{personaMB.eliminaPersona(personaMB.rut)}" update="computers" />
 			<p:commandButton value="Cancelar" onclick="confirmDelete.hide();" type="button" />
 		</p:confirmDialog>
 	</h:form>

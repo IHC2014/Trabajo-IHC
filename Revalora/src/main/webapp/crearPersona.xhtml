@@ -92,7 +92,13 @@
 						<h:outputText value="Experto: " />
 						<p:selectBooleanCheckbox value="#{personaMB.experto}" />
 
-                        <h:commandButton action="#{loginBean.ingresar}" value="Guardar" icon="ui-icon-disk" style="margin:10px 0"/>
+                        <h:outputText value="Clave: " />
+                        <p:password value="#{personaMB.clave}" />
+
+                        <h:outputText value="Posicion: " />
+                        <p:inputMask value="#{personaMB.posicion}" />
+                        
+                        <h:commandButton action="#{personaMB.insertarPersona}" value="Guardar" icon="ui-icon-disk" style="margin:10px 0"/>
 						<p:commandButton value="Cancelar" icon="ui-icon-cancel" style="margin:10px 0" onclick="javascript:location.href='listarPersonas.xhtml';"/>
 					</h:panelGrid>
 				</p:panel>
