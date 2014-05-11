@@ -6,60 +6,65 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Editar Persona</title>
-	<style>
-		#container {
-		}
-		
-		#header {
-		}
-		
-		#menu {
-			float: left;
-			width: 15%;
-		}
-		
-		#content {
-			float: left;
-			width: 85%;
-		}
-		
-		#footer {
-			clear: both;
-		}
-	</style>
 </h:head>
 <h:body>
 	<h:form>
-		<div id="container">
-			<div id="header">
-				<p:breadCrumb>
-					<p:menuitem value="Categories" url="#" />
-					<p:menuitem value="Sports" url="#" />
-					<p:menuitem value="Football" url="#" />
-					<p:menuitem value="Countries" url="#" />
-					<p:menuitem value="Spain" url="#" />
-					<p:menuitem value="F.C. Barcelona" url="#" />
-					<p:menuitem value="Squad" url="#" />
-					<p:menuitem value="Lionel Messi" url="#" />
-				</p:breadCrumb>
-			</div>
+		<p:layout fullPage="true">
 
-			<div id="menu">
+			<p:layoutUnit position="north" size="100"
+				header="Cabecera de la aplicación" resizable="true" closable="true"
+				collapsible="true">
+				<h:outputText value="Perfil, logout" />
+			</p:layoutUnit>
+
+			<p:layoutUnit position="south" size="100" header="Pie de página"
+				resizable="true" closable="true" collapsible="true">
+				<h:outputText value="Enlaces, Sitios Amigos" />
+			</p:layoutUnit>
+
+			<p:layoutUnit position="west" size="300" header="Menu"
+				resizable="true" closable="true" collapsible="true">
 				<p:menu>
-					<p:submenu label="Ajax Menuitems">
-						<p:menuitem value="Save" actionListener="#{menuBean.save}"
-							icon="ui-icon-disk" />
-						<p:menuitem value="Update" actionListener="#{menuBean.update}"
-							icon="ui-icon-arrowrefresh-1-w" />
+					<p:submenu label="Gestión de personas">
+						<p:menuitem value="Crear persona" url="crearPersona.xhtml"
+							actionListener="#{menuBean.update}" icon="ui-icon-plus" />
+						<p:menuitem value="Editar persona" url="editarPersona.xhtml"
+							actionListener="#{menuBean.update}" icon="ui-icon-pencil" />
+						<p:menuitem value="Listado personas" url="listarPersonas.xhtml"
+							actionListener="#{menuBean.save}"
+							icon="ui-icon-grip-dotted-vertical" />
 					</p:submenu>
-					<p:submenu label="Non-Ajax Menuitem">
-						<p:menuitem value="Delete" actionListener="#{menuBean.delete}"
-							icon="ui-icon-close" />
+					<p:submenu label="Selección de personal">
+						<p:menuitem value="Crear proceso"
+							actionListener="#{menuBean.delete}" icon="ui-icon-plus" />
+						<p:menuitem value="Editar proceso"
+							actionListener="#{menuBean.delete}" icon="ui-icon-pencil" />
+						<p:menuitem value="Detalle proceso"
+							actionListener="#{menuBean.delete}" icon="ui-icon-search" />
+					</p:submenu>
+					<p:submenu label="Gestión de grupos">
+						<p:menuitem value="Vinculo en construcción"
+							actionListener="#{menuBean.delete}" icon="ui-icon-notice" />
+					</p:submenu>
+					<p:submenu label="Clima organizacional">
+						<p:menuitem value="Vinculo en construcción"
+							actionListener="#{menuBean.delete}" icon="ui-icon-notice" />
+					</p:submenu>
+					<p:submenu label="Estrategia organizacional">
+						<p:menuitem value="Vinculo en construcción"
+							actionListener="#{menuBean.delete}" icon="ui-icon-notice" />
 					</p:submenu>
 				</p:menu>
-			</div>
+			</p:layoutUnit>
 
-			<div id="content">
+			<p:layoutUnit position="center">
+				<p:breadCrumb>
+					<p:menuitem value="Inicio" url="#" />
+					<p:menuitem value="Editar persona" url="#" />
+				</p:breadCrumb>
+
+				<p:separator />
+
 				<p:panel header="Editar Persona">
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel for="rutPersona" value="RUT: *" />
@@ -104,15 +109,15 @@
 						<h:outputText value="Experto: " />
 						<p:selectBooleanCheckbox value="#{formBean.value1}" />
 
-						<p:commandButton value="Guardar" icon="ui-icon-check"
+						<p:commandButton value="Guardar" icon="ui-icon-disk"
 							style="margin:10px 0" />
-						<p:graphicImage name="images/cars/#{car.manufacturer}-big.gif" />
+						<p:commandButton value="Cancelar" icon="ui-icon-cancel"
+							style="margin:10px 0" onclick="javascript:location.href='listarPersonas.xhtml';"/>
 					</h:panelGrid>
 				</p:panel>
-			</div>
+			</p:layoutUnit>
+		</p:layout>
 
-			<div id="footer"></div>
-		</div>
 	</h:form>
 </h:body>
 </html>

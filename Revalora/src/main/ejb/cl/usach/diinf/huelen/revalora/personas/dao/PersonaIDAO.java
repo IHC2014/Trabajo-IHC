@@ -34,4 +34,11 @@ public interface PersonaIDAO {
 	 * @throws Exception
 	 */
 	public void actualizaPersona(Persona p) throws Exception;
+
+	/**
+	 * {@link PersonaDAO#obtenerPersonas(String)}
+	 * @param p
+	 * @throws Exception
+	 */
+	public Persona obtenerPersonas(String rut) throws Exception;
 }

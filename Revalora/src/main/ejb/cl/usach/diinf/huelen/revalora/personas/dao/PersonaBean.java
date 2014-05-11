@@ -86,9 +86,8 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 	}
 
 	/**
-	 * Método encargado de elimina en la base de datos una persona.
+	 * Método encargado de obtener una lista de todas las personas.
 	 * 
-	 * @param p Objeto persona que se elimina.
 	 * @return 
 	 * @throws Exception 
 	 * @since 1.0
@@ -126,5 +125,27 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 			log.error("Error:" + e.getClass());
 			throw e;
 		}
+	}
+
+	/**
+	 * Método encargado de obtener una lista de todas las personas.
+	 * 
+	 * @param rut, rut a retornar como objeto persona
+	 * @return 
+	 * @throws Exception 
+	 * @since 1.0
+	 */
+	public Persona obtenerPersonas(String rut) throws Exception {
+		try {
+			log.info("Antes de obtenerPersonas");
+			return dao.obtenerPersonas(rut);
+		} catch (Exception e) {
+			log.error("Error en obtenerPersonas");
+			log.error("Error:" + e.getMessage());
+			log.error("Error:" + e.getCause());
+			log.error("Error:" + e.getClass());
+			throw e;
+		}
+
 	}
 }

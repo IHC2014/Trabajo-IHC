@@ -51,12 +51,33 @@ import cl.usach.diinf.huelen.revalora.personas.dto.Persona;
 
 	@PostConstruct
 	public void init(){
-		try {
-			log.info("antes de llamar bean.obtenerPersonas()");
-			personas = bean.obtenerPersonas();
-		} catch (Exception e) {
-			log.error("Error al PersonaIDAO.obtenerPersonas():" + e);
-			e.printStackTrace();
+		if(this.rut!=null&&"".compareTo(this.rut)!=0) {
+			Persona p;
+			try {
+				p = bean.obtenerPersonas(this.rut);
+				this.rut = p.getRut();
+				this.id = p.getId();
+				this.clave = p.getClave();
+				this.nombre = p.getNombre();
+				this.apellido = p.getApellido();
+				this.genero = p.getGenero();
+				this.cumpleano = p.getCumpleano();
+				this.direccion = p.getDireccion();
+				this.telefono = p.getTelefono();
+				this.correo = p.getCorreo();
+				this.posicion = p.getPosicion();
+			} catch (Exception e) {
+				log.error("Error al bean.obtenerPersonas("+this.rut+"):" + e);
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				log.info("antes de llamar bean.obtenerPersonas()");
+				personas = bean.obtenerPersonas();
+			} catch (Exception e) {
+				log.error("Error al PersonaIDAO.obtenerPersonas():" + e);
+				e.printStackTrace();
+			}			
 		}
 	}
 

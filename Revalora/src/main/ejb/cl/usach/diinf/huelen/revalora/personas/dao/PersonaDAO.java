@@ -125,6 +125,27 @@ public class PersonaDAO implements PersonaIDAO {
 	}
 
 	/**
+	 * Metodo encargado de retornar un objeto persona buscado por su llave o rut
+	 * 
+	 * @since 1.0
+	 * @param rut rut a buscar.
+	 * @throws Exception
+	 * 
+	 */
+	public Persona obtenerPersonas(String rut) throws Exception {
+		log.info("Iniciando obtenerPersonas(String rut)");
+		try {
+			log.info("Busca persona para eliminar");
+			PersonaEntitie pe = entityManager.find(PersonaEntitie.class, rut);
+			log.info("Termina transaccion y retorna");
+			return this.transforma(pe);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Error e:" + e);
+		}
+	}
+
+	/**
 	 * Clase encargada en actualziar a una persona
 	 * 
 	 * @since 1.0
