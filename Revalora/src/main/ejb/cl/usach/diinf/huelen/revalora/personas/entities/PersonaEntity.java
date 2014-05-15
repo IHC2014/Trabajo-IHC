@@ -1,30 +1,42 @@
-package cl.usach.diinf.huelen.revalora.personas.dto;
+package cl.usach.diinf.huelen.revalora.personas.entities;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+
 /**
- * Clase que representa a un objeto persona.
+ * Clase entidad que representa los registros de la tabla PERSONS.
  * 
  * @author Pablo Gavilan
  * @version 1.0
  */
-public class Persona implements Serializable {
+@Entity @Table(name="PERSONS")
+@NamedQuery(name="Persona.findAll",  query="SELECT c FROM PersonaEntity c")
+public class PersonaEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String rut;
-	private int id;
-	String clave;
-	String nombre;
-	String apellido;
-	String genero;
-	Date cumpleano;
-	String direccion;
-	private int telefono;
-	private String correo;
-	private String posicion;
+	public static final String SQL_SELECT_ALL = "Persona.findAll";
+	public static final String SQL_ELIMINA = "Persona.eliminar";
 
-	public Persona() {
+	@Id @Column(nullable=false, length=10, name="RUT") private String rut;
+	@Column(unique=true, nullable=false, name="ID") private int id;
+	@Column(unique=true, length=20, nullable=false, name="PASSWORD") private String clave;
+	@Column(unique=true, length=30, nullable=false, name="FIRST_NAME") private String nombre;
+	@Column(unique=true, length=30, nullable=false, name="LAST_NAME") private String apellido;
+	@Column(unique=true, length=1, nullable=false, name="GENDER") private String genero;
+	@Column(unique=true, nullable=false, name="BIRTH_DATE") private Date cumpleano;
+	@Column(unique=true, nullable=false, name="ADDRESS") private String direccion;
+	@Column(unique=true, nullable=false, name="PHONE") private int telefono;
+	@Column(nullable=false, length=256, name="E_MAIL") private String correo;
+	@Column(nullable=false, length=100, name="POSITION") private String posicion;
+
+	public PersonaEntity() {
 	}
 
 	public String getRut() {

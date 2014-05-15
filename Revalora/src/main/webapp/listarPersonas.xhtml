@@ -15,8 +15,7 @@
       message="¿Seguro de continuar con la eliminación de ?"
       header="Advertencia de Eliminación" severity="alert"
       widgetVar="confirmDelete" modal="true">
-      <h:commandButton value="Aceptar"
-        action="#{personaMB.eliminaPersona(document.getElementById('rutSelecciona').value)}"
+      <h:commandButton value="Aceptar" actionListener="#{personaMB.eliminaPersona}"
         update="dataTable"
         process="@this" />
       <p:commandButton value="Cancelar" onclick="confirmDelete.hide();" type="button" />
@@ -67,7 +66,7 @@
 
           <p:messages />
 
-          <p:dataTable id="dataTable" var="persona" value="#{personaMB.personas}"
+          <p:dataTable id="dataTable" name="dataTable" var="persona" value="#{personaMB.personas}"
             widgetVar="carsTable" paginator="true" rows="10" scrollHeight="150"
             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
             rowsPerPageTemplate="5,10,15"
@@ -92,15 +91,13 @@
               <h:outputText value="Masculino" rendered="#{persona.genero eq 'M'}"/>
             </p:column>
             <p:column style="width:6%">
-              <h:panelGrid border="0" columns="2">
                 <h:commandButton action="#{personaMB.obtenerPersona(persona.rut)}"
                   value="Editar" alt="Editar" class="ui-icon ui-icon-pencil"/>
                 <p:commandLink
-                  onclick="document.getElementById('rutSelecciona').value='#{persona.rut}';confirmDelete.show();">
+                  onclick="confirmDelete.show();">
                   <span class="ui-icon ui-icon-closethick"></span>
-                  <f:setPropertyActionListener target="#{personaMB.rut}" value="#{persona.rut}" />
+                  <f:attribute name="attribute1" value="#{personaMB.rut}"/>
                 </p:commandLink>
-              </h:panelGrid>
             </p:column>
           </p:dataTable>
         </p:layoutUnit>
