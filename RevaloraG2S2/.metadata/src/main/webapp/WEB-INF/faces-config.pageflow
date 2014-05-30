@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13999459755520" configfile="/Revalora/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="listarPersonas.xhtml" id="pf14012485803910" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14012485803921" inlinks="pf14012485803922 pf14012485803923" path="/cl/usach/diinf/revalora/persona/listarPersonas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editarPersona.xhtml" id="pf14012485803924" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14012485803922" inlinks="pf14012485803921" path="/cl/usach/diinf/revalora/persona/editarPersona.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="crearPersona.xhtml" id="pf14012485803925" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14012485803923" path="/cl/usach/diinf/revalora/persona/crearPersona.xhtml"/>
+  <links id="pf14012485803921" target="pf14012485803924" source="pf14012485803910" outcome="actualiza"/>
+  <links id="pf14012485803922" target="pf14012485803910" source="pf14012485803924" outcome="success"/>
+  <links id="pf14012485803923" target="pf14012485803910" source="pf14012485803925" outcome="success"/>
+</pageflow:Pageflow>
