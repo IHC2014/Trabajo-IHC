@@ -4,37 +4,44 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import cl.usach.diinf.huelen.revalora.grupo.dto.Grupo;
+import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
 
-@Remote 
+@Remote
 public interface GrupoImpl {
 
 	/**
-	 * @see GrupoBean#insertarUserGroup(Grupo)
+	 * @see GrupoBean#insertarUserGroup(GrupoDTO)
 	 * @param u
 	 * @throws Exception
 	 */
-	public void insertarUserGroup(Grupo u) throws Exception;
-	
-	/**
-	 * @see GrupoBean#actualizaUserGroup(Grupo)
-	 * @param u
-	 * @throws Exception
-	 */
-	public void actualizaUserGroup(Grupo u) throws Exception;
+	public void insertarUserGroup(GrupoDTO u) throws Exception;
 
 	/**
-	 * @see GrupoBean#obtenerUserGroups(Grupo)
+	 * @see GrupoBean#actualizaUserGroup(GrupoDTO)
+	 * @param u
+	 * @throws Exception
+	 */
+	public void actualizaUserGroup(GrupoDTO u) throws Exception;
+
+	/**
+	 * @see GrupoBean#obtenerUserGroups()
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Grupo> obtenerUserGroups() throws Exception;
+	public List<GrupoDTO> obtenerUserGroups() throws Exception;
 
 	/**
-	 * @see GrupoBean#eliminaUserGroup(Grupo)
+	 * @see GrupoBean#obtenerUserGroups(String)
+	 * @return
+	 * @throws Exception
+	 */
+	public GrupoDTO obtenerUserGroups(String id) throws Exception;
+
+	/**
+	 * @see GrupoBean#eliminaUserGroup(GrupoDTO)
 	 * @param u
 	 * @throws Exception
 	 */
-	public void eliminaUserGroup(Grupo u) throws Exception;
-	
+	public void eliminaUserGroup(GrupoDTO u) throws Exception;
+
 }

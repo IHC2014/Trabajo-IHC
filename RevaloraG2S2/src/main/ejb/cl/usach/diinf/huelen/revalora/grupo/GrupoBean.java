@@ -8,28 +8,29 @@ import org.apache.log4j.Logger;
 
 import cl.usach.diinf.huelen.revalora.grupo.dao.GroupDAOImpl;
 import cl.usach.diinf.huelen.revalora.grupo.dao.GrupoDAO;
-import cl.usach.diinf.huelen.revalora.grupo.dto.Grupo;
+import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
+import cl.usach.diinf.revalora.persona.dto.PersonaDTO;
 
 @Stateless
 public class GrupoBean implements GrupoImpl {
 
 	/**
 	 * Logger de la clase
-	 * 
+	 *
 	 * @since 1.0
 	 */
 	Logger log = Logger.getLogger(GrupoBean.class);
 
 	/**
 	 * Objeto de conexion a la clase de acceso de datos para UserGroup
-	 * 
+	 *
 	 * @since 1.0
 	 */
 	GroupDAOImpl dao;
 
 	/**
 	 * Constructor de la clase
-	 * 
+	 *
 	 * @since 1.0
 	 */
 	public GrupoBean() {
@@ -39,13 +40,13 @@ public class GrupoBean implements GrupoImpl {
 
 	/**
 	 * Método encargado de ingresar a la base de datos una UserGroup.
-	 * 
+	 *
 	 * @param p
 	 *            Objeto UserGroup ingresada a la base de datos.
 	 * @throws Exception
 	 * @since 1.0
 	 */
-	public void insertarUserGroup(Grupo u) throws Exception {
+	public void insertarUserGroup(GrupoDTO u) throws Exception {
 		try {
 			this.log.info("Antes de insertar");
 			this.dao.insertaUserGroup(u);
@@ -62,13 +63,13 @@ public class GrupoBean implements GrupoImpl {
 
 	/**
 	 * Método encargado de actualziar a la base de datos una UserGroup.
-	 * 
+	 *
 	 * @param p
 	 *            Objeto UserGroup ingresada a la base de datos.
 	 * @throws Exception
 	 * @since 1.0
 	 */
-	public void actualizaUserGroup(Grupo u) throws Exception {
+	public void actualizaUserGroup(GrupoDTO u) throws Exception {
 		try {
 			this.log.info("Antes de actualizaUserGroup");
 			this.dao.actualizaUserGroup(u);
@@ -86,14 +87,14 @@ public class GrupoBean implements GrupoImpl {
 
 	/**
 	 * Método encargado de elimina en la base de datos una UserGroup.
-	 * 
+	 *
 	 * @param p
 	 *            Objeto UserGroup que se elimina.
 	 * @return
 	 * @throws Exception
 	 * @since 1.0
 	 */
-	public List<Grupo> obtenerUserGroups() throws Exception {
+	public List<GrupoDTO> obtenerUserGroups() throws Exception {
 		try {
 			this.log.info("Antes de obtenerUserGroups");
 			return this.dao.obtenerUserGroups();
@@ -107,14 +108,39 @@ public class GrupoBean implements GrupoImpl {
 	}
 
 	/**
+	 * Método encargado de obtener en la base de datos un UserGroup.
+	 *
+	 * @param p
+	 *            Objeto UserGroup que se elimina.
+	 * @return GrupoDTO segun su llave
+	 * @throws Exception
+	 * @author Pablo Gavilan
+	 * @since 1.0
+	 */
+	public GrupoDTO obtenerUserGroups(String id) throws Exception {
+		try {
+			this.log.info("Antes de obtenerPersonas");
+			GrupoDTO salida = this.dao.obtenerUserGroups(id);
+			List<PersonaDTO> personas = this.dao.obtenerPersonasPorGrupo(id);
+			salida.setPersonas(personas);
+			return salida;
+		} catch (Exception e) {
+			this.log.error("Error en obtenerGrupo");
+			this.log.error("Error:" + e.getMessage());
+			this.log.error("Error:" + e.getCause());
+			this.log.error("Error:" + e.getClass());
+			throw e;
+		}
+	}
+	/**
 	 * Método encargado de elimina en la base de datos una UserGroup.
-	 * 
+	 *
 	 * @param p
 	 *            Objeto UserGroup que se elimina.
 	 * @throws Exception
 	 * @since 1.0
 	 */
-	public void eliminaUserGroup(Grupo u) throws Exception {
+	public void eliminaUserGroup(GrupoDTO u) throws Exception {
 		try {
 			this.log.info("Antes de eliminaUserGroup");
 			this.dao.eliminaUserGroup(u);

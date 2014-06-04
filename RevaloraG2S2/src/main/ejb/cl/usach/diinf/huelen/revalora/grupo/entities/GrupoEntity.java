@@ -2,19 +2,23 @@ package cl.usach.diinf.huelen.revalora.grupo.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 
 /**
  * The persistent class for the USER_GROUPS database table.
- * 
+ *
  */
 @Entity
 @Table(name="USER_GROUPS")
-@NamedQuery(name="UserGroupEntitie.findAll", query="SELECT u FROM GrupoEntitie u")
-public class GrupoEntitie implements Serializable {
+@NamedQuery(name="UserGroupEntitie.findAll", query="SELECT u FROM GrupoEntity u")
+public class GrupoEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final String SQL_SELECT_ALL = "UserGroupEntitie.findAll";
 
 	@Id
@@ -24,7 +28,7 @@ public class GrupoEntitie implements Serializable {
 	@Column(name="GROUP_NAME")
 	private String groupName;
 
-	public GrupoEntitie() {
+	public GrupoEntity() {
 	}
 
 	public int getId() {

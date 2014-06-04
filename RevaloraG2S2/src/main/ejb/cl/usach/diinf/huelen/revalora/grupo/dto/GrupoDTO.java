@@ -1,14 +1,18 @@
 package cl.usach.diinf.huelen.revalora.grupo.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Grupo implements Serializable {
+import cl.usach.diinf.revalora.persona.dto.PersonaDTO;
+
+public class GrupoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private int id;
 	private String groupName;
-	
-	public Grupo() {
+	private List<PersonaDTO> personas;
+
+	public GrupoDTO() {
 	}
 
 	public int getId() {
@@ -26,7 +30,15 @@ public class Grupo implements Serializable {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	
-	
+
+	public List<PersonaDTO> getPersonas() {
+		return this.personas;
+	}
+
+	public void setPersonas(List<PersonaDTO> personas) {
+		this.personas = personas;
+	}
+
+
 
 }
