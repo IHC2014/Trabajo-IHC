@@ -1,4 +1,4 @@
-package cl.usach.diinf.huelen.revalora.grupo;
+package cl.usach.diinf.revalora.grupo;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import javax.ejb.Stateless;
 
 import org.apache.log4j.Logger;
 
-import cl.usach.diinf.huelen.revalora.grupo.dao.GroupDAOImpl;
-import cl.usach.diinf.huelen.revalora.grupo.dao.GrupoDAO;
-import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
+import cl.usach.diinf.revalora.grupo.dao.GroupDAOImpl;
+import cl.usach.diinf.revalora.grupo.dao.GrupoDAO;
+import cl.usach.diinf.revalora.grupo.dto.GrupoDTO;
 import cl.usach.diinf.revalora.persona.dto.PersonaDTO;
 
 @Stateless

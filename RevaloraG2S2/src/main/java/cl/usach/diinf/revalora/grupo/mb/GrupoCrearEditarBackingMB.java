@@ -9,8 +9,8 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 
-import cl.usach.diinf.huelen.revalora.grupo.GrupoImpl;
-import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
+import cl.usach.diinf.revalora.grupo.GrupoImpl;
+import cl.usach.diinf.revalora.grupo.dto.GrupoDTO;
 import cl.usach.infraestructura.util.TablaValores;
 
 /**

@@ -1,4 +1,4 @@
-package cl.usach.diinf.huelen.revalora.grupo.dao;
+package cl.usach.diinf.revalora.grupo.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.persistence.TypedQuery;
 
 import org.apache.log4j.Logger;
 
-import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
-import cl.usach.diinf.huelen.revalora.grupo.entities.GrupoEntity;
+import cl.usach.diinf.revalora.grupo.dto.GrupoDTO;
+import cl.usach.diinf.revalora.grupo.entities.GrupoEntity;
 import cl.usach.diinf.revalora.persona.dto.PersonaDTO;
 import cl.usach.diinf.revalora.persona.entities.PersonaEntity;
 import cl.usach.diinf.revalora.personas.util.PersonaUtil;

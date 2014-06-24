@@ -3,6 +3,7 @@ package cl.usach.diinf.revalora.persona.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.apache.log4j.Logger;
@@ -42,7 +43,10 @@ public class PersonaDAO implements PersonaDAOImpl {
 	public PersonaDAO() {
 		this.log.info("Crea constructor");
 		try{
-			this.entityManager = Persistence.createEntityManagerFactory("revalora-pu").createEntityManager();
+			EntityManagerFactory dto = Persistence.createEntityManagerFactory("revalora-pu");
+			this.log.info("Luego de crear Persistence.createEntityManagerFactory(revalora-pu);");
+			this.entityManager = dto.createEntityManager();
+			this.log.info("Luego de crear el createEntityManager()");
 		} catch (Exception e) {
 			this.log.error("Error " + e);
 			throw e;

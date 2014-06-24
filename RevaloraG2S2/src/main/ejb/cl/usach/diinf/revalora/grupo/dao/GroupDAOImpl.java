@@ -1,9 +1,9 @@
-package cl.usach.diinf.huelen.revalora.grupo.dao;
+package cl.usach.diinf.revalora.grupo.dao;
 
 import java.util.List;
 
-import cl.usach.diinf.huelen.revalora.grupo.dto.GrupoDTO;
-import cl.usach.diinf.huelen.revalora.grupo.entities.GrupoEntity;
+import cl.usach.diinf.revalora.grupo.dto.GrupoDTO;
+import cl.usach.diinf.revalora.grupo.entities.GrupoEntity;
 import cl.usach.diinf.revalora.persona.dto.PersonaDTO;
 
 

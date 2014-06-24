@@ -1,4 +1,4 @@
-package cl.usach.diinf.huelen.revalora.grupo.dto;
+package cl.usach.diinf.revalora.grupo.dto;
 
 import java.io.Serializable;
 import java.util.List;

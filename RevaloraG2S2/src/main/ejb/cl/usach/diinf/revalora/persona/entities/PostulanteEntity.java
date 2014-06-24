@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
 /**
  * Clase entidad que representa los registros de la tabla APPLICANTS.
  *
@@ -19,15 +18,12 @@ import javax.persistence.Table;
 @NamedQuery(name="Postulante.findAll",  query="SELECT c FROM PostulanteEntity c")
 public class PostulanteEntity implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
 
 	public static final String SQL_SELECT_ALL = "Postulante.findAll";
 
 	@Id @Column(nullable=false, length=10, name="RUT") private String rut;
 	@Column(nullable=false, length=100, name="CURRICULUM") private String cv;
-
-
 
 	public String getRut() {
 		return this.rut;
@@ -45,8 +41,6 @@ public class PostulanteEntity implements Serializable {
 		this.cv = cv;
 	}
 
-
 	public PostulanteEntity() {
 	}
-
 }

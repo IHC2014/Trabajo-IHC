@@ -1,4 +1,4 @@
-package cl.usach.diinf.huelen.revalora.grupo.entities;
+package cl.usach.diinf.revalora.grupo.entities;
 
 import java.io.Serializable;
 
